@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý lớp Học</title>
+
+    <!-- bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- link CSS Hien -->
+    <link rel="stylesheet" href="./css/project_Home_QuanLyKhoaHoc.css">
+
+</head>
+
+
+<body>
+    <header id="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-3">
+                    <!-- logo -->
+                    <div class="d-flex justify-content-start resize-img-home">
+                        <img src="./acsset/img/Logo-Rikkei.png" alt="">
+                    </div>
+                    <div id="phuongCham">Để nông dân biết code</div>
+                </div>
+                <div class="col-7">
+                    <div id="divHeThong" class="d-flex justify-content-center font-weight-bold">
+                        HỆ THỐNG QUẢN LÝ SINH VIÊN RIKKEI
+                    </div>
+                </div>
+                <!-- kích hoạt nút đăng xuất -->
+                <div class="col-2 buttonSize d-flex align-items-end">
+                    <div> <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logout">
+                            Đăng xuất
+                        </button></div>
+                </div>
+                <!-- hiện ra biểu mẩu xác định đăng xuất  -->
+                <div class="modal fade" id="logout" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Xác nhận đăng xuất</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Bạn có muốn đăng xuất khỏi hệ thống?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" id="btnLogout"
+                                    data-bs-dismiss="modal">Có</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container-fluid">
+            <div id="divBody">
+                <div class="row">
+                    <div class="col-2" id="lightConten">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <a href="./project_Home_QuanLyKhoaHoc.html" class="text-decoration-none"
+                                    id="homePage">Bảng điều
+                                    khiển</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="./project_Home_QuanLyKhoaHoc.html" class="text-decoration-none active"
+                                    id="courseManagement">Quản lý khóa học</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="./project_Home_QuanLyLopHoc.html" class="text-decoration-none"
+                                    id="classManagement">Quản lý
+                                    lớp học</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="./project_Home_QuanLySinhVien.html" class="text-decoration-none"
+                                    id="studentManagement">Quản
+                                    lý sinh viên</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="./project_Home_QuanLyTaiKhoan.html" class="text-decoration-none"
+                                    id="accountManagement">Quản
+                                    lý tài khoản</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Quan ly khoa hoc -->
+                    <div class="col-10" id="center">
+                        <h2>QUẢN LÝ LỚP HỌC</h2>
+                        <!--thêm mới, tìm kiếm, sắp xếp,  -->
+                        <div class="control d-flex justify-content-around ">
+                            <!--  kích hoạt button thêm mới -->
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#newClass" onclick="loadDataSelectOption()">
+                                    Thêm mới
+                                </button>
+                            </div>
+
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="newClass" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <!-- thêm mới lớp học -->
+                                            <h5 class="modal-title" id="exampleModalLabel">Thêm mới lớp học</h5>
+
+                                            <!-- button -->
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <!-- Modal-Biểu mẫu thêm mới -->
+                                        <div class="modal-body">
+                                            <div class="mb-3 row">
+                                                <label for="courseId" class="col-sm-3 col-form-label">Mã khóa
+                                                    học</label>
+                                                <div class="col-sm-9">
+                                                    <select name="courseId" id="courseId"></select>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label for="classId" class="col-sm-3 col-form-label">Mã lớp
+                                                    học</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="classId"
+                                                        name="classId" />
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label for="className" class="col-sm-3 col-form-label">Tên lớp
+                                                    học</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="className"
+                                                        name="className" />
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label for="teacher" class="col-sm-3 col-form-label">Giảng viên</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="teacher"
+                                                        name="teacher" />
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label for="number" class="col-sm-3 col-form-label">Sĩ số</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="number" name="number" />
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label for="describe" class="col-sm-3 col-form-label">Mô tả</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="describe"
+                                                        name="describe" />
+                                                </div>
+                                            </div>btnCreateClass
+                                            <div class="mb-3 row">
+                                                <label for="status" class="col-sm-3 col-form-label">Trạng thái</label>
+                                                <div class="col-sm-9">
+                                                    <select name="status" id="status">
+                                                        <option value="Chờ lớp">Chờ lớp</option>
+                                                        <option value="Hoạt Động">Hoạt động</option>
+                                                        <option value="Kết thúc">Kết thúc</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" id="btnCreateClass"
+                                                data-bs-dismiss="modal">Thêm
+                                                mới</button>
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Đóng</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- tìm kiếm -->
+                            <div class="col-md-5 d-flex">
+                                <input type="text" name="searchClass" id="searchClass"
+                                    placeholder="Nhập từ lớp học tìm kiếm" class="form-control mr-sm-2">
+                                <button id="btnSearchClass" onclick="btnSearchClass()"
+                                    class="btn btn-outline-success my-2 my-sm-0"> Tìm
+                                    kiếm</button>
+                            </div>
+                            <!-- sắp xếp -->
+                            <div class="col-md-5 d-flex">
+                                <label for="orderClass"> Sắp xếp</label>
+                                <select name="orderClass" onchange="orderClass()" id="orderClass" class="form-select">
+                                    <option value="tangdan">Tăng dần</option>
+                                    <option value="giamdan">Giảm dần</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- hiển thị bảng danh sách -->
+                        <div>
+                            <table class="table table-bordered" id="table">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Mã lớp</th>
+                                        <th>Tên lớp</th>
+                                        <th>Giảng viên</th>
+                                        <th>Mô tả</th>
+                                        <th>Sĩ số</th>
+                                        <th>Trạng thái</th>
+                                        <th>Khóa học</th>
+                                        <th>Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="listClass">
+                                    <!-- Bieu mau sua -->
+                                    <div class="modal fade" id="newEditClass" tabindex="-1"
+                                        aria-labelledby="EditexampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <!-- edit lớp học -->
+                                                    <h5 class="modal-title" id="EditexampleModalLabel">Cập nhật lớp hoc
+                                                    </h5>
+                                                    <!-- button -->
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <!-- Modal-Biểu mẫu cập nhật -->
+                                                <div class="modal-body">
+                                                    <div class="mb-3 row">
+                                                        <label for="ediCourseId" class="col-sm-3 col-form-label">Mã khóa
+                                                            học</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="ediCourseId" id="ediCourseId"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3 row">
+                                                        <label for="editClassId" class="col-sm-3 col-form-label">Mã
+                                                            lớp học</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" class="form-control" id="editClassId"
+                                                                name="editClassId" disabled />
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3 row">
+                                                        <label for="editClassName" class="col-sm-3 col-form-label">Tên
+                                                            lớp học</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" class="form-control" id="editClassName"
+                                                                name="editClassName" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3 row">
+                                                        <label for="editTeacher" class="col-sm-3 col-form-label">Giảng
+                                                            viên</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" class="form-control" id="editTeacher"
+                                                                name="editTeacher" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3 row">
+                                                        <label for="editNumber" class="col-sm-3 col-form-label">Sĩ
+                                                            số</label>
+                                                        <input type="text" name="editNumber" id="editNumber">
+                                                    </div>
+                                                    <div class="mb-3 row">
+                                                        <label for="editDescribe" class="col-sm-3 col-form-label">Mô
+                                                            tả</label>
+                                                        <input type="text" name="editDescribe" id="editDescribe">
+                                                    </div>
+                                                    <div class="mb-3 row">
+                                                        <label for="editStatus" class="col-sm-3 col-form-label">Trạng
+                                                            thái</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="editStatus" id="editStatus">
+                                                                <option value="Chờ lớp">Chờ lớp</option>
+                                                                <option value="Hoạt động">Hoạt động</option>
+                                                                <option value="Kết thúc">Kết thúc</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary" id="btnEditclass"
+                                                            data-bs-dismiss="modal" onclick="updateClass()">Cập
+                                                            nhật</button>
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Đóng</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Biểu mẫu xác nhận xóa -->
+                                    <div class="modal fade" id="deleteClassModal" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa
+                                                        lớp
+                                                        học
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body" id="deleteClass">
+                                                    Bạn có muốn xóa lớp học ?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-primary" id="btnYes"
+                                                        data-bs-dismiss="modal" onclick="deleteClass02()">Có</button>
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Không</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- phân trang -->
+                        <ul class="pagination nav nav-pills">
+                            <a class="page-link" href="javascript:previewPage()" id="preview">Preview</a>
+                            <ul class="pagination" id="pagination"></ul>
+                            <a class="page-link" href="javascript:nextPage()" id="next">Next</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>Copyright Rikkei Acadeny @2023</p>
+        </div>
+
+    </footer>
+    <!-- js Hien -->
+    <script src="./js/project_Home_QuanLyLopHoc.js"></script>
+    <!-- <script src="./js/dataUser.js"></script> -->
+    <!-- bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+
+</body>
+
+
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+
+    <!-- bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- link CSS Hien -->
+    <link rel="stylesheet" href="./css/project_HomePage.css">
+
+</head>
+
+
+<body>
+    <header id="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-3">
+                    <div class="d-flex justify-content-start resize-img-home">
+                        <img src="./acsset/img/Logo-Rikkei.png" alt="">
+                    </div>
+                    <div id="phuongCham">Để nông dân biết code</div>
+                </div>
+                <div class="col-7">
+                    <div id="divHeThong" class="d-flex justify-content-center font-weight-bold">
+                        HỆ THỐNG QUẢN LÝ SINH VIÊN RIKKEI
+                    </div>
+                </div>
+                <div class="col-2 buttonSize d-flex align-items-end">
+                    <div> <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logout">
+                            Đăng xuất
+                        </button></div>
+                </div>
+                <div class="modal fade" id="logout" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Xác nhận đăng xuất</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Bạn có muốn đăng xuất khỏi hệ thống?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" id="btnLogout"
+                                    data-bs-dismiss="modal">Có</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </header>
+    <main >
+        <div class="container-fluid">
+            <div id="divBody">
+                <div class="row">
+                    <div class="col-2" id="lightConten">
+                        <div>
+                            <ul class="list-group">
+                                <li class="list-group-item"><a href="./project_HomePage.html"
+                                        class="text-decoration-none" id="homePage">Bảng điều khiển</a></li>
+                                <li class="list-group-item"><a href="./project_Home_QuanLyKhoaHoc.html"
+                                        class="text-decoration-none active" id="courseManagement">Quản lý khóa học</a>
+                                </li>
+                                <li class="list-group-item"><a href="./project_Home_QuanLyLopHoc.html"
+                                        class="text-decoration-none" id="classManagement">Quản lý lớp học</a></li>
+                                <li class="list-group-item"><a href="./project_Home_QuanLySinhVien.html"
+                                        class="text-decoration-none" id="studentManagement">Quản lý sinh viên</a></li>
+                                <li class="list-group-item"><a href="./project_Home_QuanLyTaiKhoan.html"
+                                        class="text-decoration-none" id="accountManagement">Quản lý tài khoản</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-10" id="center">
+                        <div id="chinhText">
+                            <h3>Thống kê khóa học</h3>
+                            <ul>
+                                <li>
+                                    <p>Số khóa học: </p>
+                                </li>
+                            </ul>
+                            <h3>Thống kê lớp học</h3>
+                            <ul>
+                                <li>
+                                    <p>Số lớp học: </p>
+                                </li>
+                                <li>
+                                    <p>Số lớp đang hoạt động: </p>
+                                </li>
+                                <li>
+                                    <p>Số lớp đã kết thúc: </p>
+                                </li>
+                                <li>
+                                    <p>Số lớp đang chờ: </p>
+                                </li>
+                            </ul>
+                            <h3>Thống kê sinh viên</h3>
+                            <ul>
+                                <li>
+                                    <p>Tổng số SV:</p>
+                                </li>
+                                <li>
+                                    <p>Số SV chờ lớp</p>
+                                </li>
+                                <li>
+                                    <p>Số SV đang học</p>
+                                </li>
+                                <li>
+                                    <p>Số SV bảo lưu/đình chỉ</p>
+                                </li>
+                                <li>
+                                    <p>Số SV tốt nghiệp</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <footer id="footer">
+        <div class="container" id="container">
+            Copyright Rikkei Acadeny @2023
+        </div>
+    </footer>
+    <!-- js Hien -->
+    <script src="./js/pproject_HomePage.js"></script>
+    <!-- bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+
+
+</body>
+</html>

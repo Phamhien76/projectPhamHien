@@ -1,0 +1,96 @@
+
+.resize-img-home img{
+    width: 130px;
+    display: block;
+}
+.clo-3{
+    
+}
+#divHeThong{
+    color: rgb(250, 69, 69);
+    font-size: 40px;
+    margin: 30px;
+}
+.buttonSize{
+    display: block;
+}
+#divBody{
+    margin: 20px;
+}
+
+.size_img img{
+    width: 400px;
+    display: block;
+    margin: 30
+    px;
+}
+h2{
+    text-align: center;
+    margin: 30px;
+}
+
+#seach{
+    margin: 30px;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.resize-img-home img{
+    width: 200px;
+    display: block;
+    background-color: aliceblue;
+}
+.clo-3{
+    
+}
+#divHeThong{
+    color: rgb(243, 240, 240);
+    font-size: 50px;
+    margin: 30px;
+}
+.buttonSize{
+    display: block;
+    margin-bottom: 20px;
+}
+#divBody{
+
+}
+
+
+#seach{
+    margin: 30px;
+}
+#header{
+    background-image: url("../acsset/img/dươi.jpg");
+   
+}
+#phuongCham{
+    color: white;
+    font-size: 30px;
+    margin-top: 20px;
+}
+#lightConten{
+   background-image: url("../acsset/img/ben\ trái\ nhỏ\ gấu.jpg"); 
+   height: 700px;
+}
+#center{
+    background-image: url("../acsset/img/-body.jpg");
+    height: 700px;
+}
+#footer{
+    background-image: url("../acsset/img/dươi.jpg");
+    height: 200px;
+
+}
+#container{
+    color: white;
+}
+#chinhText{
+    margin-left:  40px;
+}
+main{
+    height: 700px;
+}
