@@ -42,15 +42,41 @@ arrCourse.forEach((course) => {
                 email: studentItem.email,
                 phone: studentItem.phone,
                 sex: studentItem.sex,
-                status: studentItem.tatus,
+                status: studentItem.status,
                 className: classItem.className,
-                courseName: course.courseName, 
+                courseName: course.courseName,
             });
         })
 
     });
 });
 
+
+function getData() {
+    arrStudent = [];
+    let arrCourse = JSON.parse(localStorage.getItem("studentManagement")) || [];
+    //
+    arrCourse.forEach((course) => {
+        course.arrClass.forEach((classItem) => {
+            classItem.arrStudent.forEach((studentItem) => {
+                arrStudent.push({
+                    studentId: studentItem.studentId,
+                    studentName: studentItem.studentName,
+                    year: studentItem.year,
+                    address: studentItem.address,
+                    email: studentItem.email,
+                    phone: studentItem.phone,
+                    sex: studentItem.sex,
+                    status: studentItem.status,
+                    className: classItem.className,
+                    courseName: course.courseName,
+                });
+            })
+
+        });
+    });
+
+}
 
 // cap nhat arrStudent vào studentManagement
 
@@ -64,10 +90,10 @@ function updateArrStudent() {
                 let studentItem = classItem.arrStudent[y];
                 if (studentItem.studentId == idTargetStdent) {
                     studentItem.studentId = idTargetStdent;
-                    studentItem.studentName = editClassName.value;
+                    studentItem.studentName = editStudentName.value;
                     studentItem.address = editAddress.value;
                     studentItem.email = editEmail.value;
-                    studentItem.phone = editNumber.value;
+                    studentItem.phone = editPhone.value;
                     studentItem.status = editStatus.value;
                     studentItem.year = editYear.value;
                     studentItem.sex = editNam.value;
@@ -116,22 +142,27 @@ document.getElementById("btnCreateStudent").addEventListener("click", function (
         address: address.value,
         email: email.value,
         phone: phone.value,
-        sex: nam == true ? "Nam" : "Nữ",
+        sex: nam,
         year: year.value,
         status: isstatus.value,
     };
     arrCourse.forEach((course) => {
         course.arrClass.forEach((classItem) => {
-            classItem.arrStudent.forEach((studentItem) => {
-                if (studentItem.studentId == newStudent.studentId)
-                    classItem.arrStudent.push(newStudent)
-            })
+
+            if (classItem.classId == newStudent.classId) {
+                classItem.arrStudent.push(newStudent)
+                console.log("sj", newStudent);
+
+            }
+
+
         })
     });
     localStorage.setItem("studentManagement", JSON.stringify(arrCourse));
+    console.log("sdgj", arrCourse);
 
     //    làm rỗng o input
-
+    getData();
     courseId.value = "";
     classId.value = "";
     studentId.value = "";
@@ -182,11 +213,11 @@ function editStudent(studentId) {
                     editStudentName.value = studentItem.studentName;
                     editYear.value = studentItem.year;
                     editAddress.value = studentItem.address;
-                    editEmail.value = studentItem.email ;
+                    editEmail.value = studentItem.email;
                     editStatus.value = studentItem.status;
                     editPhone.value = studentItem.phone;
                     editNam.value = studentItem.sex;
-            
+
                 }
 
             })
@@ -196,81 +227,98 @@ function editStudent(studentId) {
 
 }
 
-
 function updateStudent() {
     updateArrStudent()
     // Xoa idTargetClass
     idTargetClass = "";
 
     // resetData();
-    getArrClass();
+    getData()
     renderDataPage(currentPage)
 
     // myModal.hide();
     window.onload = function () { renderData() }
 
 };
+let idTargetStudent = "";
+let idDeleteStudent = "";
 
-// // 6.XÓA
-// function deleteClass01(index) {
-//     idDeleteClass = index;
-//     let deleteClass = document.getElementById("deleteClass");
-//     deleteClass.innerHTML = ` Bạn có muốn xóa khóa học ${index} ?`
-// }
-// function deleteClass02() {
-//     for (let i = 0; i < arrCourse.length; i++) {
-//         // const course = arrCourse[i];
-//         for (let j = 0; j < arrCourse[i].arrClass.length; j++) {
-//             const classItem = arrCourse[i].arrClass[j];
-//             if (classItem.classId == idDeleteClass) {
-//                 arrClass.splice(j, 1);
-//             }
-//         }
-//     }
-//     localStorage.setItem("studentManagement", JSON.stringify(arrCourse))
-//     renderDataPage(currentPage);
-// };
 
-// // 3. TÌM KIẾM
-// function btnSearchClass() {
-//     let arrCourse = JSON.parse(localStorage.getItem("studentManagement"));
-//     //2. Lấy dữ liệu trên ô input search
-//     let classSearch = document.getElementById("searchClass");
-//     let valueSearch = classSearch.value.toLowerCase();
-//     let classItem = [];
-//     for (let i = 0; i <= arrCourse.length; i++) {
-//         for (let j = 0; j <= arrCourse[i]?.arrClass?.length; j++) {
-//             classItem.push(arrCourse[i].arrClass[j]);        
-//         }
-//     }
-//     let classItemfilter = classItem.filter(element => element?.classId?.toLowerCase().includes(valueSearch));
-//     //4. render dữ liệu lên table
-//     let listClassData = document.getElementById("listClass");
-//     listClassData.innerHTML = "";
-//     for (let index = 0; index < classItemfilter.length; index++) {
-//         listClassData.innerHTML += `
-//             <tr>
-//             <td>${index + 1}</td>
-//             <td>${classItemfilter[index]?.classId}</td>
-//             <td>${classItemfilter[index]?.className}</td>
-//             <td>${classItemfilter[index]?.lecturer}</td>
-//             <td>${classItemfilter[index]?.description}</td>
-//             <td>${classItemfilter[index]?.totalNumber}</td>
-//             <td>${classItemfilter[index]?.status}</td>
-//             <td>${classItemfilter[index]?.courseName}</td>
-//             <td>            
-//             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newEditClass" onclick="editClass('${arrClass[index].classId
-//             }')">Sửa</button>                    
-//             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteClassModal" onclick="deleteClass01('${arrClass[index].classId
-//             }')">Xóa</button></td>
-//             </tr>
-//             `;
-//     }
+// 6.XÓA
+function deleteStudent01(studentId) {
+    idDeleteStudent = studentId;
+    let deleteStudent = document.getElementById("deleteStudent");
+    deleteStudent.innerHTML = ` Bạn có chắc chắn muốn xóa sinh viên ${studentId} ?`
+    console.log("day là", idDeleteStudent);
+}
+function deleteStudent02() {
+    for (let i = 0; i < arrCourse.length; i++) {
+        
+        // const course = arrCourse[i];
+        for (let j = 0; j < arrCourse[i].arrClass.length; j++) {
+            const classItem = arrCourse[i].arrClass[j];
+            for (let z = 0; z < classItem.arrStudent.length; z++) {
+                let studentItem = classItem.arrStudent[z];
+                if (studentItem.studentId == idDeleteStudent) {
+                    console.log("day là z",  classItem.arrStudent)
+                    classItem.arrStudent.splice(z, 1);
+                }
+            }
+        }
+    }
+    console.log("slkg", arrCourse);
+    localStorage.setItem("studentManagement", JSON.stringify(arrCourse))
+    renderDataPage(currentPage);
+    console.log(currentPage,"=>>>>>")
+};
 
-// };
+// 3. TÌM KIẾM
+function btnSearchStudent() {
+    let arrCourse = JSON.parse(localStorage.getItem("studentManagement"));
+    //2. Lấy dữ liệu trên ô input search
+    let studentSearch = document.getElementById("searchStudent");
+    let valueSearch = studentSearch.value.toLowerCase();
+    let studentItem = [];
+    for (let i = 0; i <= arrCourse.length; i++) {
+        for (let j = 0; j <= arrCourse[i].arrClass.length; j++) {
+            for (let z = 0; z < arrClass[j].arrStudent.length; j++)
+                studentItem.push(arrClass[j].arrStudent[z]);
+
+        }
+    }
+    console.log("slkjg", studentItem);
+    let studentItemfilter = studentItem.filter(element => element?.studentId?.toLowerCase().includes(valueSearch));
+    //4. render dữ liệu lên table
+    let listStudentData = document.getElementById("listClass");
+    listStudentData.innerHTML = "";
+    for (let index = 0; index < studentItemfilter.length; index++) {
+        listStudentData.innerHTML += `
+        <tr>
+        <td>${no += 1}</td>
+        <td>${studentItem.studentId}</td>
+        <td>${studentItem.studentName}</td>
+        <td>${studentItem.year}</td>
+        <td>${studentItem.address}</td>
+        <td>${studentItem.email}</td>
+        <td>${studentItem.phone}</td>
+        <td>${studentItem.sex ? "Nam" : "Nữ"}</td>                     
+        <td>${studentItem.status}</td>
+        <td>${studentItem.className}</td>
+        <td>${studentItem.courseName}</td>
+        <td>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newEditStudent" onclick="editStudent('${studentItem.studentId
+            }')">Sửa</button>                    
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteStudentModal" onclick="deleteStudent01('${studentItem.studentId
+            }')">Xóa</button>
+        </td>
+        </tr>
+        `;
+    }
+
+};
 
 // //4.SĂP XẾP
-// function orderClass () {
+// function orderStudent () {
 //     //1.  Lấy dữ liệu hiện lưu trữ ở localStorage
 //     let arrCourse = JSON.parse(localStorage.getItem("studentManagement")) || [];
 //     let classSearch=[];
@@ -296,19 +344,23 @@ function updateStudent() {
 //        for (let index = 0; index < classSearch.length; index++) {
 //            listClassData.innerHTML += `
 //                <tr>
-//                <td>${index + 1}</td>
-//                <td>${classSearch[index]?.classId}</td>
-//                <td>${classSearch[index]?.className}</td>
-//                <td>${classSearch[index]?.lecturer}</td>
-//                <td>${classSearch[index]?.description}</td>
-//                <td>${classSearch[index]?.totalNumber}</td>
-//                <td>${classSearch[index]?.status}</td>
-//                <td>${classSearch[index]?.courseName}</td>
-//                <td>            
-//                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newEditClass" onclick="editClass('${arrClass[index].classId
-//                }')">Sửa</button>                    
-//                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteClassModal" onclick="deleteClass01('${arrClass[index].classId
-//                }')">Xóa</button></td>
+//                <td>${no += 1}</td>
+//                <td>${studentItem.studentId}</td>
+//                <td>${studentItem.studentName}</td>
+//                <td>${studentItem.year}</td>
+//                <td>${studentItem.address}</td>
+//                <td>${studentItem.email}</td>
+//                <td>${studentItem.phone}</td>
+//                <td>${studentItem.sex ? "Nam" : "Nữ"}</td>                     
+//                <td>${studentItem.status}</td>
+//                <td>${studentItem.className}</td>
+//                <td>${studentItem.courseName}</td>
+//                <td>
+//                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newEditStudent" onclick="editStudent('${studentItem.studentId
+//       }')">Sửa</button>                    
+//                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteStudentModal" onclick="deleteStudent01('${studentItem.studentId
+//       }')">Xóa</button>
+//                </td>
 //                </tr>
 //                `;
 //        }
@@ -363,7 +415,7 @@ function renderDataPage(page) {
 
     for (let index = indexForm; index < indexTo; index++) {
         let studentItem = arrStudent[index];
-        
+
         listStudentData.innerHTML += `
                      <tr>
                      <td>${no += 1}</td>
@@ -373,7 +425,7 @@ function renderDataPage(page) {
                      <td>${studentItem.address}</td>
                      <td>${studentItem.email}</td>
                      <td>${studentItem.phone}</td>
-                     <td>${studentItem.sex}</td>
+                     <td>${studentItem.sex ? "Nam" : "Nữ"}</td>                     
                      <td>${studentItem.status}</td>
                      <td>${studentItem.className}</td>
                      <td>${studentItem.courseName}</td>

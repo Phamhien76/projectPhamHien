@@ -70,7 +70,7 @@
                     <div class="col-2" id="lightConten">
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <a href="./project_Home_QuanLyKhoaHoc.html" class="text-decoration-none"
+                                <a href="./project_HomePage.html" class="text-decoration-none"
                                     id="homePage">Bảng điều
                                     khiển</a>
                             </li>
@@ -191,10 +191,10 @@
                                             <div class="mb-3 row">
                                                 <label for="editSex" class="col-sm-3 col-form-label">Giới tính</label>
                                                 <div class="col-sm-9">
-                                                    <input type="radio" name="editSex" id="male" value="Nam"
+                                                    <input type="radio" name="editSex" id="male" value="male"
                                                         checked /><label for="male">Nam</label>
                                                     <input type="radio" name="editSex" id="female"
-                                                        value="Nữ" /><label for="female">Nữ</label>
+                                                        value="female" /><label for="female">Nữ</label>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -211,16 +211,16 @@
                             </div>
                             <!-- tìm kiếm -->
                             <div class="col-md-5 d-flex">
-                                <input type="text" name="searchClass" id="searchClass"
+                                <input type="text" name="searchStudent" id="searchStudent"
                                     placeholder="Nhập từ lớp học tìm kiếm" class="form-control mr-sm-2">
-                                <button id="btnSearchClass" onclick="btnSearchClass()"
+                                <button id="btnSearchClass" onclick="btnSearchStudent()"
                                     class="btn btn-outline-success my-2 my-sm-0"> Tìm
                                     kiếm</button>
                             </div>
                             <!-- sắp xếp -->
                             <div class="col-md-5 d-flex">
                                 <label for="orderClass"> Sắp xếp</label>
-                                <select name="orderClass" onchange="orderClass()" id="orderClass" class="form-select">
+                                <select name="orderClass" onchange="orderStudent()" id="orderClass" class="form-select">
                                     <option value="tangdan">Tăng dần</option>
                                     <option value="giamdan">Giảm dần</option>
                                 </select>
@@ -353,18 +353,16 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa
-Sinh viên
-                                                    </h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa sinh viên </h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body" id="deleteStuden">
+                                                <div class="modal-body" id="deleteStudent">
                                                     Bạn có muốn xóa sinh viên ?
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-primary" id="btnYes"
-                                                        data-bs-dismiss="modal" onclick="deleteClass02()">Có</button>
+                                                        data-bs-dismiss="modal" onclick="deleteStudent02()">Có</button>
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Không</button>
                                                 </div>
