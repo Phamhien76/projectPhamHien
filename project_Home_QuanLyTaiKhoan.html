@@ -9,7 +9,7 @@
     <!-- bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        
+
     <!-- link CSS Hien -->
     <link rel="stylesheet" href="./css/project_Home_QuanLyTaiKhoan.css">
 
@@ -63,112 +63,120 @@
         <div class="container-fluid">
             <div id="divBody">
                 <div class="row">
-                    <div class="col-2"id="lightConten">
-                        <div>
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    <a href="./project_HomePage.html" class="text-decoration-none" id="homePage">Bảng điều
-                                        khiển</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="./project_Home_QuanLyKhoaHoc.html" class="text-decoration-none active"
-                                        id="courseManagement">Quản lý khóa học</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="./project_Home_QuanLyLopHoc.html" class="text-decoration-none" id="classManagement">Quản lý
-                                        lớp học</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="./project_Home_QuanLySinhVien.html" class="text-decoration-none" id="studentManagement">Quản
-                                        lý sinh viên</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="./project_Home_QuanLyTaiKhoan.html" class="text-decoration-none" id="accountManagement">Quản
-                                        lý tài khoản</a>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="col-2" id="lightConten">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <a href="./project_HomePage.html" class="text-decoration-none" id="homePage"><i
+                                        class="fa-solid fa-bars">　</i>Bảng điều
+                                    khiển</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="./project_Home_QuanLyKhoaHoc.html" class="text-decoration-none active"
+                                    id="courseManagement"><i class="fa-solid fa-landmark">　</i>Quản lý khóa học</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="./project_Home_QuanLyLopHoc.html" class="text-decoration-none"
+                                    id="classManagement"><i class="fa-solid fa-user-group ">　</i>Quản lý
+                                    lớp học</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="./project_Home_QuanLySinhVien.html" class="text-decoration-none"
+                                    id="studentManagement"> <i class="fa-solid fa-people-group">　</i>Quản
+                                    lý sinh viên</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="./project_Home_QuanLyTaiKhoan.html" class="text-decoration-none"
+                                    id="accountManagement"><i class="fa-solid fa-user">　</i>Quản
+                                    lý tài khoản</a>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="col-10"id="center">
+                    <div class="col-8" id="center">
                         <h2>QUẢN LÝ TÀI KHOẢN</h2>
                         <div id="seach">
                             <div class="d-flex justify-content-around khoangCach">
-                                <div><button type="button">Thêm mới</button></div>
-                                <div>
-                                    <input type="text" value="">
-                                    <button> Tìm kiếm</button>
+                                <div class="col-md-5 d-flex">
+                                    <input type="text" name="searchStudent" id="searchUser"
+                                        placeholder="Nhập từ lớp học tìm kiếm" class="form-control mr-sm-2">
+                                    <button id="btnSearchClass" onclick="btnSearchUser()"
+                                        class="btn btn-outline-success my-2 my-sm-0"> Tìm
+                                        kiếm</button>
                                 </div>
-                                <div>
-                                    <label for=""> Sắp xếp</label>
-                                    <select name="" id="">
-                                        <option value="idLop-ASC">Id lớp ASC</option>
-                                        <option value="idLop-DESC">Id lớp DESC</option>
+                                <div class="col-md-5 d-flex">
+                                    <label for="orderClass"> Sắp xếp</label>
+                                    <select name="orderClass" onchange="orderUser()" id="orderUser" class="form-select">
+                                        <option value="tangdan">Tăng dần</option>
+                                        <option value="giamdan">Giảm dần</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
 
-                        <div id="listUser">
-                            <table class="table table-bordered">
-                                <tr>
-                                    <th>STT</th>
-                                    <th>Email</th>
-                                    <th>Mật khẩu</th>
-                                    <th>Họ và tên</th>
-                                    <th>Trạng thái</th>
-                                    <th>Hành động</th>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Yumi@gmail.com</td>
-                                    <td>15012020</td>
-                                    <td>Nguyễn Yumi</td>
-                                    <td>Đang hoạt động</td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary">Khóa</button>
-                                        <button type="button" class="btn btn-danger">Mở khóa</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Emi@gmail.com</td>
-                                    <td>20032021</td>
-                                    <td>Nguyễn Emi</td>
-                                    <td>Đang hoạt động</td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary">Khóa</button>
-                                        <button type="button" class="btn btn-danger">Mở khóa</button>
-                                    </td>
+                        <div>
+                            <table class="table table-bordered" id="table">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Email</th>
+                                        <th>Mật khẩu</th>
+                                        <th>Họ và tên</th>
+                                        <th>Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="listUser">
 
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Yuki@gmail.com</td>
-                                    <td>15112022</td>
-                                    <td>Phạm Võ Yuki</td>
-                                    <td>Đang bị khóa</td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary">Khóa</button>
-                                        <button type="button" class="btn btn-danger">Mở khóa</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Tuongvi@gmail.com</td>
-                                    <td>2082020</td>
-                                    <td>Phạm Tường Vi</td>
-                                    <td>Đang hoạt động</td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary">Khóa</button>
-                                        <button type="button" class="btn btn-danger">Mở khóa</button>
-                                    </td>
-                                </tr>
+                                </tbody>
+                                <!-- modal khoa -->
+                                <div class="modal fade" id="khoa" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Xác nhận khóa tài khoản
+                                                </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body" id="lock">
+                                              
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" id="btnLogout"
+                                                    data-bs-dismiss="modal" onclick="lockButton()" >Có</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Không</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- madal mở khóa -->
+                                <div class="modal fade" id="moKhoa" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Xác nhận mở khóa tài</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>                                            
+                                            <div class="modal-body" id="unlock">
+                                               
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" id="btnLogout"
+                                                    data-bs-dismiss="modal" onclick="unlockButton()" >Có</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Không</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </table>
                         </div>
                         <div>
                             <ul class="pagination nav nav-pills">
                                 <a class="page-link" href="javascript:previewPage()" id="preview">Preview</a>
-                                <ul class="pagination"  id="pagination"></ul>
+                                <ul class="pagination" id="pagination"></ul>
                                 <a class="page-link" href="javascript:nextPage()" id="next">Next</a>
                             </ul>
                         </div>
@@ -185,8 +193,8 @@
 
     </footer>
     <!-- js Hien -->
-    <!-- <script src="./js/dataUser.js"></script> -->
-    <script src="./js/pproject_HomePage.js"></script>
+    <script src="./js/dataUser.js"></script>
+    <script src="./js/project_Home_QuanLyTaiKhoan.js"></script>
     <!-- bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -197,6 +205,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></script>
 
 
 </body>

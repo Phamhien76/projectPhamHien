@@ -11,6 +11,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- link CSS Hien -->
     <link rel="stylesheet" href="./css/project_Home_QuanLyKhoaHoc.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 </head>
 
@@ -19,7 +20,10 @@
     <header id="header">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-3">
+                <div class="col-1">
+
+                </div>
+                <div class="col-2">
                     <!-- logo -->
                     <div class="d-flex justify-content-start resize-img-home">
                         <img src="./acsset/img/Logo-Rikkei.png" alt="">
@@ -66,33 +70,38 @@
     <main>
         <div class="container-fluid">
             <div id="divBody">
-                <div class="row">
+                <div class="row" id="cha">
+                    <div class="col-1"></div>
                     <div class="col-2" id="lightConten">
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <a href="./project_HomePage.html" class="text-decoration-none" id="homePage">Bảng điều
+                                <a href="./project_HomePage.html" class="text-decoration-none" id="homePage"><i
+                                        class="fa-solid fa-bars">　</i>Bảng điều
                                     khiển</a>
                             </li>
                             <li class="list-group-item">
                                 <a href="./project_Home_QuanLyKhoaHoc.html" class="text-decoration-none active"
-                                    id="courseManagement">Quản lý khóa học</a>
+                                    id="courseManagement"><i class="fa-solid fa-landmark">　</i>Quản lý khóa học</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="./project_Home_QuanLyLopHoc.html" class="text-decoration-none" id="classManagement">Quản lý
+                                <a href="./project_Home_QuanLyLopHoc.html" class="text-decoration-none"
+                                    id="classManagement"><i class="fa-solid fa-user-group ">　</i>Quản lý
                                     lớp học</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="./project_Home_QuanLySinhVien.html" class="text-decoration-none" id="studentManagement">Quản
+                                <a href="./project_Home_QuanLySinhVien.html" class="text-decoration-none"
+                                    id="studentManagement"> <i class="fa-solid fa-people-group">　</i>Quản
                                     lý sinh viên</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="./project_Home_QuanLyTaiKhoan.html" class="text-decoration-none" id="accountManagement">Quản
+                                <a href="./project_Home_QuanLyTaiKhoan.html" class="text-decoration-none"
+                                    id="accountManagement"><i class="fa-solid fa-user">　</i>Quản
                                     lý tài khoản</a>
                             </li>
                         </ul>
                     </div>
                     <!-- Quan ly khoa hoc -->
-                    <div class="col-10" id="center">
+                    <div class="col-8" id="center">
                         <h2 id="quanLyKhoaHoc">QUẢN LÝ KHÓA HỌC</h2>
                         <!--thêm mới, tìm kiếm, sắp xếp,  -->
                         <div class="control d-flex justify-content-around ">
@@ -174,7 +183,8 @@
                             <!-- sắp xếp -->
                             <div class="col-md-5 d-flex">
                                 <label for="orderCourse"> Sắp xếp</label>
-                                <select name="orderCourse" id="orderCourse" class="form-select">
+                                <select name="orderCourse" id="orderCourse" class="form-select"
+                                    aria-label="Default select example">
                                     <option value="tangdan">Tăng dần</option>
                                     <option value="giamdan">Giảm dần</option>
                                 </select>
@@ -285,18 +295,28 @@
                         <!-- phân trang -->
                         <ul class="pagination nav nav-pills">
                             <a class="page-link" href="javascript:previewPage()" id="preview">Preview</a>
-                            <ul class="pagination"  id="pagination"></ul>
+                            <ul class="pagination" id="pagination"></ul>
                             <a class="page-link" href="javascript:nextPage()" id="next">Next</a>
                         </ul>
                     </div>
+                    <div class="col-1"></div>
                 </div>
             </div>
         </div>
     </main>
     <footer id="footer">
-        <div class="container" id="container">
-            Copyright Rikkei Acadeny @2023
+        <div class="container-fluid">
+            <div id="divBody">
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class=" col-10" id="container">
+                        Copyright Rikkei Acadeny @2023
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+            </div>
         </div>
+
     </footer>
     <!-- js Hien -->
     <!-- <script src="./js/dataUser.js"></script> -->
@@ -311,6 +331,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
+    <!-- thu viện icon -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></script>
 
 </body>
 

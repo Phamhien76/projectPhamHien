@@ -10,70 +10,70 @@ document.getElementById("btnLogout").addEventListener("click", function () {
     window.location.href = "project_Login.html";
 })
 
-// thống kê khóa học
-// let arrCourse=[];
-// function totalCourse() {
-//     let course = JSON.parse(localStorage.getItem("studentManagement")) || [];
-//     course.forEach(function () {
-//         arrCourse.push = ({
-//             courseId: courseId.value,
-//             courseName: courseName.value,
-//             courseTime: courseTime.value,
-//             status: isActive == true ? "Hoạt động" : "Không hoạt động",
-//             arrClass: []
-//         });
-//     }) 
-//     console.log("skg", arrCourse);
-// }
-// totalCourse();
-// let course = document.getElementById("khoaHoc");
-// course.innerHTML += arrCourse.length.toString();
+// khóa học
+let arrCourse = [];
+function totalCourse() {
+    let arrCourse = JSON.parse(localStorage.getItem("studentManagement")) || [];
+
+    let course = document.getElementById("khoaHoc");
+    course.innerHTML += arrCourse.length.toString();
+}
+totalCourse();
 
 
-//tổng số lớp học
+// tổng số lớp học
 let arrClass = [];
 function getArrClass() {
-    
     let arrCourse = JSON.parse(localStorage.getItem("studentManagement")) || [];
-    arrCourse.forEach((course) => {       
-            return arrClass.push({
-                courseId: courseId.value,
-                classId: classId.value,
-                className: className.value,
-                lecturer: teacher.value,
-                description: describe.value,
-                totalNumber: number.value,
-                status: isstatus.value,
+    arrCourse.forEach((course) => {
+        course.arrClass.forEach((classItem) => {
+            arrClass.push({
+                courseId: classItem.courseId,
+                classId: classItem.classId,
+                className: classItem.className,
+                lecturer: classItem.teacher,
+                description: classItem.describe,
+                totalNumber: classItem.number,
+                status: classItem.isstatus,
                 arrStudent: []
-                }) 
-            });
-          
-        };
+            })
 
-console.log("skg", arrClass);
+        })
+    });
+};
+getArrClass();
 let lopHoc = document.getElementById("lopHoc");
 lopHoc.innerHTML += arrClass.length.toString();
 
+//lớp đang hoạt động
+let lopHoatDong = 0;
+for (let i = 0; i < arrClass.length; i++) {
+    if (arrClass[i].status == "Hoạt Động") {
+        lopHoatDong += 1;
+    }
+}
+let lopHoatDong1 = document.getElementById("lopHoatDong");
+lopHoatDong1.innerHTML += arrClass.length.toString();
 
+// lớp kết thúc
+let lopKetThuc = 0;
+for (let i = 0; i < arrClass.length; i++) {
+    if (arrClass[i].status == "Kết thúc") {
+        lopKetThuc += 1;
+    }
+}
+let lopKetThuc1 = document.getElementById("lopKetThuc");
+lopKetThuc1.innerHTML += arrClass.length.toString();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// lớp chờ
+let choLop = 0;
+for (let i = 0; i < arrClass.length; i++) {
+    if (arrClass[i].status == "Chờ lớp") {
+        choLop += 1;
+    }
+}
+let choLop1 = document.getElementById("lopCho");
+choLop1.innerHTML += arrClass.length.toString();
 
 //tổng số sinh viên
 let total = JSON.parse(localStorage.getItem("studentManagement")) || [];
@@ -103,17 +103,17 @@ totalStuden();
 let tex = document.getElementById("totalStudent");
 tex.innerHTML += arrStudent.length.toString();
 
-//tổng số sinh viên đang hoc
-let choLop = 0;
+//tổng số chờ lớp
+let lopCho = 0;
 for (let i = 0; i < arrStudent.length; i++) {
     if (arrStudent[i].status == "Đang chờ") {
-        choLop += 1;
+        lopCho += 1;
     }
-  }
-let lopCho = document.getElementById("choLop");
-lopCho.innerHTML += choLop.toString();
+}
+let lopCho1 = document.getElementById("choLop");
+lopCho1.innerHTML += choLop.toString();
 
-//tổng số chờ lớp
+//tổng số đang hoc
 let dangHoc = 0;
 for (let i = 0; i < arrStudent.length; i++) {
     if (arrStudent[i].status == "Đang học") {
